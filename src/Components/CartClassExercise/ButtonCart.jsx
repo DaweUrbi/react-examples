@@ -28,7 +28,7 @@ const StyledButton = styled.button`
   font-family: Montserrat;
   background-color: ${({ type }) => variant[type].bgColor};
   color: ${({ type }) => variant[type].color};
-  border: none;
+  border: 1px solid;
   border-radius: 8px;
   font-size: 0.8rem;
   padding: 0.5rem 1rem;
@@ -36,7 +36,8 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  height: fit-content;
+  width: fit-content;
+  align-items: center;
   &:hover {
     background-color: ${({ type }) => variant[type].color};
     color: ${({ type }) => variant[type].bgColor};

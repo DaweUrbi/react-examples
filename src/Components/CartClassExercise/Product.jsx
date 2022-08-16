@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CartContext } from './CartContext';
 import ButtonCart from './ButtonCart';
 import styled from 'styled-components';
+
 const Card = styled.div`
   display: grid;
   align-items: center;
@@ -11,6 +12,7 @@ const Card = styled.div`
   background-color: hsl(0, 0%, 100%);
   gap: 1rem;
   padding: 1rem;
+
   p {
     color: gray;
   }
@@ -21,6 +23,7 @@ const Card = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
   }
 `;
 
