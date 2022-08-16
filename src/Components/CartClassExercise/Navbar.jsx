@@ -10,12 +10,13 @@ export default class Navbar extends Component {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '1.5rem',
+          padding: '1em',
           backgroundColor: 'white',
           position: 'fixed',
-          width: '100%',
+          width: '96%',
+          borderRadius: '10px',
         }}>
-        <h1>WMAD Store</h1>
+        <h1>Store</h1>
         <div style={{ display: 'flex', justifyContent: 'end', gap: '1rem' }}>
           <h2>
             <MdOutlineShoppingCart />

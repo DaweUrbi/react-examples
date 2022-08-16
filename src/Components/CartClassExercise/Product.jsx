@@ -7,7 +7,7 @@ const Card = styled.div`
   align-items: center;
   grid-template-columns: 1fr 1fr;
   border-radius: 10px;
-  width: 450px;
+  width: 420px;
   background-color: hsl(0, 0%, 100%);
   gap: 1rem;
   padding: 1rem;
@@ -32,7 +32,7 @@ export default class Product extends Component {
         <img
           src={product.image}
           alt=''
-          style={{ width: '90%', height: '300px' }}
+          style={{ width: '100%', height: '50%' }}
         />
         <div className='card--content'>
           <p>{product.category.toUpperCase()}</p>
