@@ -5,8 +5,10 @@ import './App.css';
 // import Context from './Components/Context/Context';
 // import CartExercise from './Components/CartExercise/CartExercise';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
-import store from './Components/TodoRedux/app/store';
-import Todo from './Components/TodoRedux/Todo';
+// import Todo from './Components/TodoRedux/Todo';
+// import store from './Components/TodoRedux/app/store';
+import BlogPosts from './Components/BlogPosts/BlogPosts';
+import store from './Components/BlogPosts/app/store';
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
       {/* <CartClassExercise /> */}
       <Provider store={store}>
         {/* <Redux /> */}
-        <Todo />
+        {/* <Todo /> */}
+        <BlogPosts />
       </Provider>
     </div>
   );
