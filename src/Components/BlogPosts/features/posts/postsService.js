@@ -1,8 +1,16 @@
 import axios from 'axios';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
+
 import { db } from '../../firebase-config';
 
-
-const postCollectionRef = collection (db, 'posts');
+const postsCollectionRef = collection(db, 'posts');
 
 const postsService = {
   get: async () => {
@@ -10,21 +18,31 @@ const postsService = {
       'https://jsonplaceholder.typicode.com/posts'
     );
     return response.data;
-    
   },
-
   getFromFirebase: async () => {
-    const response = await getDocs (postCollectionRef);
-    return response.docs.map((doc) => ({...doc.data(), id: doc.id}));
-
+    try {
+      console.log('here');
+      const response = await getDocs(postsCollectionRef);
+      const parseDocs = response.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      console.log(parseDocs);
+      return parseDocs;
+    } catch (error) {
+      console.log('error', error);
+    }
   },
-
   post: async (post) => {
     const response = await axios.post(
       'https://jsonplaceholder.typicode.com/posts',
       post
     );
     return response.data;
+  },
+  postToFirebase: async (post) => {
+    const response = await addDoc(postsCollectionRef, post);
+    return { ...post, id: response.id };
   },
   delete: async (id) => {
     const response = await axios.delete(
@@ -35,12 +53,26 @@ const postsService = {
       return id;
     }
   },
+  deleteFromFirebase: async (id) => {
+    const postRef = doc(db, 'posts', id);
+    await deleteDoc(postRef);
+    return id;
+  },
   update: async (post) => {
     console.log('post', post);
     const response = await axios.put(
       `https://jsonplaceholder.typicode.com/posts/${post.id}`
     );
     console.log('data', response);
+    return post;
+  },
+  updateInFirebase: async (post) => {
+    const postRef = doc(db, 'posts', post.id);
+    const response = await updateDoc(postRef, {
+      body: post.body,
+      title: post.title,
+    });
+    console.log('res', response);
     return post;
   },
 };
