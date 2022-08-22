@@ -25,14 +25,16 @@ export default function Post(props) {
     }
     setIsEditing(!isEditing);
   };
+
+
   return (
     <article key={post.id}>
       {!isEditing ? (
         <>
-          <button onClick={() => handleDelete(post.id)}>X</button>
-          <button onClick={handleEdit}>Edit</button>
           <h3>{post.title}</h3>
           <p>{post.body}</p>
+          <button onClick={handleEdit}>Edit</button>
+          <button onClick={() => handleDelete(post.id)}>X</button>
         </>
       ) : (
         <>
